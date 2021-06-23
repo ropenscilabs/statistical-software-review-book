@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 Guide for Authors | rOpenSci Statistical Software Peer Review</title>
+<meta name="author" content="Mark Padgham and Noam Ross">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.9002/transition.js"></script><script src="libs/bs3compat-0.2.5.9002/tabs.js"></script><script src="libs/bs3compat-0.2.5.9002/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">rOpenSci Statistical Software Peer Review</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li class="book-part">Introduction</li>
+<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview of the Project and of this Book</a></li>
+<li class="book-part">Package Development, Submission, and Review</li>
+<li><a class="active" href="pkgdev.html"><span class="header-section-number">3</span> Guide for Authors</a></li>
+<li><a class="" href="pkgsubmission.html"><span class="header-section-number">4</span> Guide for Editors</a></li>
+<li><a class="" href="pkgreview.html"><span class="header-section-number">5</span> Guide for Reviewers</a></li>
+<li class="book-part">Standards</li>
+<li><a class="" href="standards.html"><span class="header-section-number">6</span> Standards: Version 0.0.1</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="appendices.html"><span class="header-section-number">A</span> Appendices</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="pkgdev" class="section level1">
+<h1>
+<span class="header-section-number">3</span> Guide for Authors<a class="anchor" aria-label="anchor" href="#pkgdev"><i class="fas fa-link"></i></a>
+</h1>
+<p>The current chapter should be considered an extension of the corresponding
+<a href="https://devguide.ropensci.org/guide-for-authors.html">“Guide for Authors”</a> in
+rOpenSci’s “Dev Guide”. The principles for package development described there
+also apply to statistical packages, with this chapter describing additional
+processes and practices for packages intended for submission to the statistical
+software peer review system.</p>
+<p>The major additional process is the documentation of how a package complies
+with the general and category-specific standards given in <a href="standards.html#standards">Chapter
+6</a>. Authors need to document within the software itself every point
+at which it complies with every general and every applicable category-specific
+standard listed in that chapter. The process of doing so is facilitated by the
+<a href="https://github.com/ropensci-review-tools/srr"><code>srr</code> package</a>, as described in
+detail in <a href="pkgdev.html#pkgdev-srr">Sub-section 3.4, below</a>.</p>
+<p>Prior to that sub-section, this chapter begins with consideration of the scope
+of statistical software able to be considered for review, followed by
+descriptions of two tools intended to be used through the entire process of
+package development. The first tool is the <a href="https://github.com/ropensci-review-tools/pkgcheck"><code>pkgcheck</code>
+package</a> which can be used
+to confirm whether software is ready for submission or not, and enables authors
+to locally run the suite of checks which are automatically run on package
+submission. The subsequent sub-section describes our <a href="https://github.com/ropensci-review-tools/autotest"><code>autotest</code>
+tool</a>, which is intended to
+be used through the entire process of package development. The third
+sub-section describes how use the <a href="https://github.com/ropensci-review-tools/srr"><code>srr</code>
+package</a> to address the major
+task of aligning software with our <a href="standards.html#standards">general and category-specific
+standards</a> for statistical software, and the final sub-section
+describes the final step of specifying which grade of badge authors are aiming
+for.</p>
+<div id="scope" class="section level2">
+<h2>
+<span class="header-section-number">3.1</span> Scope<a class="anchor" aria-label="anchor" href="#scope"><i class="fas fa-link"></i></a>
+</h2>
+<p>The first important task prior to submitting a package is to estimate whether
+a package is likely to be considered within our scope for statistical software.
+As described in the <a href="overview.html#overview-scope">Overview</a>, packages are generally
+considered in scope if they fit one or more of the <a href="overview.html#overview-categories">categories listed
+there</a>. Prior to submission, authors must choose one
+or more of these categories, and document how their software aligns with the
+corresponding standards given in <a href="standards.html#standards">Chapter 6</a>, according to the
+procedures <a href="pkgdev.html#pkgdev-srr">described below</a>. Any software which can be aligned
+with one or more sets of category-specific standards will by definition be
+considered in scope.</p>
+<p>Authors are encouraged to contact us at any point prior to, or during,
+development, to ask about whether a package might be in scope, or which
+categories it might fit within. Categorisation of packages may not always be
+straightforward, and we particularly encourage authors who are unsure about
+whether a package belongs in a particular category or not to contact us for
+discussion. An initial judgement of whether or not a package belongs in
+a particular category may be gained by examining the respective standards. Any
+package for which a large number of standards from a particular category may be
+considered applicable (regardless of whether or not they would actually be
+checked) is likely to fit within that category. Once you have determined that
+your package is likely to fit into one or more of our in-scope categories,
+you’ll need to apply our three primary development tools described in the
+following two sub-sections.</p>
+</div>
+<div id="the-pkgcheck-package" class="section level2">
+<h2>
+<span class="header-section-number">3.2</span> The <a href="https://github.com/ropensci-review-tools/pkgcheck"><code>pkgcheck</code> package</a><a class="anchor" aria-label="anchor" href="#the-pkgcheck-package"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <a href="https://github.com/ropensci-review-tools/pkgcheck"><code>pkgcheck</code> package</a> can
+be used to confirm whether software is ready for submission or not. The checks
+implemented within this package are also automatically run upon submission, and
+packages are expected to successfully pass all checks prior to initial
+submission. Packages may only be submitted once the main <a href="hThe://ropensci-review-tools.github.io/pkgcheck/reference/pkgcheck.html"><code>pkgcheck()</code>
+function</a>
+indicates such, through clearly stating,</p>
+<blockquote>
+<p><em>This package may be submitted</em></p>
+</blockquote>
+<p>This function accepts a single argument of the local path to
+the package being checked, and returns a detailed list of checks and associated
+results. The return object has a <code>summary</code> method which prints a formatted
+result to the console indicating whether a package is ready for
+submission or not. See the main <a href="https://github.com/ropensci-review-tools/pkgcheck">package
+website</a> for more details.</p>
+<p>The <a href="hThe://ropensci-review-tools.github.io/pkgcheck/reference/pkgcheck.html"><code>pkgcheck()</code>
+function</a>
+is also applied to all packages upon initial submission, in response to which
+our <code>ropensci-review-bot</code> will print the results in the issue. In the unlikely
+circumstances that a package is unable to pass particular checks, explanations
+should be given upon submission about why those checks fail, and why review may
+proceed in spite of such failures.</p>
+<p>An example result of the <a href="hThe://ropensci-review-tools.github.io/pkgcheck/reference/pkgcheck.html"><code>pkgcheck()</code>
+function</a>
+may be seen by applying it to the skeleton <a href="https://github.com/ropensci-review-tools/srr"><code>srr</code> (<strong>S</strong>oftware <strong>R</strong>eview
+<strong>R</strong>oclets) package</a>:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu">srr</span><span class="fu">::</span><span class="fu">srr_stats_pkg_skeleton</span> <span class="op">(</span><span class="op">)</span>
+<span class="va">checks</span> <span class="op">&lt;-</span> <span class="fu">pkgcheck</span><span class="fu">::</span><span class="fu">pkgcheck</span> <span class="op">(</span><span class="va">path</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span> <span class="op">(</span><span class="va">checks</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## ── demo 0.0.0.9000 ─────────────────────────────────────────────────────────────
+## 
+## ✔ Package uses 'roxygen2'
+## ✖ Package does not have a 'contributing.md' file
+## ✖ Package does not have a 'CITATION' file
+## ✖ Package does not have a 'codemeta.json' file
+## ✔ All functions have examples
+## ✖ Package 'DESCRIPTION' does not have a URL field
+## ✖ Package 'DESCRIPTION' does not have a BugReports field
+## ✔ Package name is available
+## ✖ Package has no continuous integration checks
+## ✖ Package coverage is 0% (should be at least 75%)
+## ✔ R CMD check found no errors
+## ✔ R CMD check found no warnings
+## ✖ This package still has TODO standards and can not be submitted
+## 
+## ℹ Current status:
+## ✖ This package is not ready to be submitted</code></pre>
+</div>
+<div id="pkgdev-autotest" class="section level2">
+<h2>
+<span class="header-section-number">3.3</span> The <a href="https://github.com/ropensci-review-tools/autotest"><code>autotest</code> package</a><a class="anchor" aria-label="anchor" href="#pkgdev-autotest"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <a href="https://github.com/ropensci-review-tools/autotest"><code>autotest</code> package</a> is
+an automated assessment tool which all packages are expected to pass in order
+to be accepted for submission. The package implements a form of “mutation
+testing,” by examining the types of all input parameters, implementing
+type-specific mutations, and examining the response of each function in
+a package to all such mutations. This kind of mutation testing is a very
+effective way to uncover any unexpected behaviour which authors themselves
+might not necessarily pre-empt. The purpose of using
+<a href="https://github.com/ropensci-review-tools/autotest"><code>autotest</code></a> to prepare
+packages is to avoid as much as possible the common situation of reviewers
+discovering bugs when they attempt to use software in ways that differ from
+typical uses envisioned by authors themselves. Reviews of software prepared
+with the help of
+<a href="https://github.com/ropensci-review-tools/autotest"><code>autotest</code></a> should be less
+burdened by discussions of what are often minor technical details, and more
+able to focus on “higher level” aspects of software quality.</p>
+<p>Full documentation of how to use
+<a href="https://github.com/ropensci-review-tools/autotest"><code>autotest</code></a> in package
+development is provided on the <a href="https://ropensci-review-tools.github.io/autotest/">package
+website</a>, and we
+particularly encourage any authors intending to develop packages for submission
+to our peer review system to step through the <a href="https://ropensci-review-tools.github.io/autotest/articles/autotest.html">main <code>autotest</code>
+vignette</a>,
+and to apply <a href="https://ropensci-review-tools.github.io/autotest/"><code>autotest</code></a>
+continuously throughout package development, to ensure that
+<a href="https://ropensci-review-tools.github.io/autotest/reference/autotest_package.html"><code>autotest_package()</code></a>
+returns clean (<code>NULL</code>) results when the package is first submitted.</p>
+</div>
+<div id="pkgdev-srr" class="section level2">
+<h2>
+<span class="header-section-number">3.4</span> Alignment with Standards<a class="anchor" aria-label="anchor" href="#pkgdev-srr"><i class="fas fa-link"></i></a>
+</h2>
+<p>Once a package has been sufficiently developed to begin alignment with our
+standards, and once all issues revealed by
+<a href="https://ropensci-review-tools.github.io/autotest/"><code>autotest</code></a> have been
+addressed, authors will need to use our third tool, the <a href="https://ropensci-review-tools.github.io/srr/"><code>ssr</code> (<strong>s</strong>oftware
+<strong>r</strong>eveiw <strong>r</strong>oclets) package</a>
+to insert both general and category-specific standards into their code, and to
+begin the process of documenting within the code itself how and where the code
+adheres to the individual standards. The <a href="https://ropensci-review-tools.github.io/srr/"><code>srr</code>
+package</a> can be installed locally
+by running either one of the following two lines.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"ropensci-review-tools/srr"</span><span class="op">)</span>
+<span class="fu">pak</span><span class="fu">::</span><span class="fu">pkg_install</span><span class="op">(</span><span class="st">"ropensci-review-tools/srr"</span><span class="op">)</span></code></pre></div>
+<p><code>srr</code> procedures are described in detail on the <a href="https://ropensci-review-tools.github.io/srr/">package
+website</a>, and in particular in
+the <a href="https://ropensci-review-tools.github.io/srr/articles/srr-stats.html">main
+vignette</a>.
+Authors are first encouraged to obtain a local copy of the <a href="https://github.com/ropensci-review-tools/srr/blob/main/vignettes/srr-stats.Rmd">source code for
+that
+vignette</a>,
+and to step through each line in order to understand how the procedure works.
+Having done that, you may then insert standards into your own package by
+running the following line from within the local directory of your package,</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">srr_stats_roxygen</span> <span class="op">(</span>category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="st">"&lt;category-1&gt;"</span>, <span class="st">"&lt;category-2&gt;"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>That will insert a new file into the <code>R/</code> directory of your package called (by
+default) <code>srr-stats-standards.R</code>. All standards initially have
+a <a href="https://roxygen2.r-lib.org"><code>roxygen2</code></a> tag of <code>@srrstatsTODO</code>, to indicate
+that these standards are yet to be addressed. These tags are processed by the
+<a href="https://ropensci-review-tools.github.io/srr/"><code>srr</code> roclet</a> which needs to be
+connected with your package by modifying the <code>Roxygen</code> line of your
+<code>DESCRIPTION</code> file to the following form:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Roxygen</span><span class="op">:</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span>markdown <span class="op">=</span> <span class="cn">TRUE</span>, roclets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="st">"namespace"</span>, <span class="st">"rd"</span>, <span class="st">"srr::srr_stats_roclet"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>You do not need to add the <code>srr</code> package anywhere else in your <code>DESCRIPTION</code>
+file, nor do you need to retain this line when submitting packages to CRAN (or
+elsewhere). You should nevertheless retain the line at all other times, and you
+can easily disable the roclet output by including <code>#' @srrVerbose FALSE</code>
+somewhere within your documentation. Note that <code>srr</code> documentation lines are
+used only to produce on-screen output triggered by running
+<a href="https://roxygen2.r-lib.org/reference/roxygenize.html"><code>roxygen2::roxygensise()</code></a>,
+or the equivalent function,
+<a href="http://devtools.r-lib.org/reference/document.html"><code>devtools::document()</code></a>,
+and do not appear in actual package documentation.</p>
+<p>The <a href="https://ropensci-review-tools.github.io/srr/"><code>srr</code> roclet</a> recognises and
+process three tags:</p>
+<ol style="list-style-type: decimal">
+<li>
+<code>@srrstatsTODO</code> to flag standards yet to be addressed;</li>
+<li>
+<code>@srrstats</code> to flag standards which have been addressed, and followed by
+descriptions of how your code addresses those standards; and</li>
+<li>
+<code>@srrstatsNA</code> to flag standards which you deem not to be applicable to your
+code, followed by explanations of why you deem those standards not
+applicable.</li>
+</ol>
+<p>The file generated by
+<a href="https://ropensci-review-tools.github.io/srr/reference/srr_stats_roxygen.html"><code>srr_stats_roxygen()</code></a>
+initially contains two <a href="https://roxygen2.r-lib.org"><code>roxygen2</code></a> blocks, the
+first containing every standard potentially applicable to your package, tagged
+with <code>@srrstatsTODO</code>, and the second with a title of <code>NA_standards</code>, to
+document standards deemed not applicable. The first task after having generated
+this file is to move standards to approximate locations within your package
+where they are likely to be addressed. For example, standards concerning tests
+should be moved somewhere within the <code>tests/</code> directory, standards concerning
+documentation to the main <code>README.Rmd</code> file, or within a vignette file. The
+<a href="https://ropensci-review-tools.github.io/srr/reference/srr_stats_pkg_skeleton.html">package
+skeleton</a>
+includes code demonstrating how to include roclet tags within <code>.Rmd</code> files.</p>
+<p>Moving different standards to more appropriate locations within your code will
+break down an initially large single list of standards into more manageable
+groups dispersed throughout your code. As each standard is addressed, it should
+be moved to one or more locations in your code as near as possible to relevant
+code, the tag changed from <code>@srrstatsTODO</code> to <code>@srrstats</code>, and a brief
+description appended to explain how that standard is addressed. Standards
+deemed not to be applicable to your package should all be grouped together
+within a single <a href="https://roxygen2.r-lib.org"><code>roxygen2</code></a> block with a title of
+<code>NA_standards</code>, each with a tag of <code>@srrstatsNA</code>, and a brief description of
+why those standards are deemed not to be applicable.</p>
+<p>Software to be submitted for review must contain no <code>@srrstatsTODO</code> tags –
+that is, all standards must have been addressed by modifying every tag to
+either <code>@srrstats</code> or <code>@srrstatsNA</code>, as described above. Two useful functions
+to aid package alignment with standards are:</p>
+<ol style="list-style-type: decimal">
+<li>The <a href="https://ropensci-review-tools.github.io/srr/reference/srr_stats_pre_submit.html"><code>srr_stats_pre_submit()</code>
+function</a>,
+which confirms that all standards have been addressed prior to submission.</li>
+<li>The <a href="https://ropensci-review-tools.github.io/srr/reference/srr_report.html"><code>srr_report()</code>
+function</a>,
+which generates a summary report with hyperlinks to locations within your
+code at which all standards are placed.</li>
+</ol>
+<p>The output of both of these functions are included in the result of the
+<a href="hThe://ropensci-review-tools.github.io/pkgcheck/reference/pkgcheck.html"><code>pkgcheck()</code>
+function</a>,
+both when run locally, and as run upon initial package submission. The
+<a href="https://ropensci-review-tools.github.io/srr/reference/srr_stats_pre_submit.html"><code>srr_stats_pre_submit()</code>
+function</a>
+can be used locally to confirm that,</p>
+<pre><code>## ✔ All applicable standards have been documented in this package</code></pre>
+<p>while the result of the <a href="https://ropensci-review-tools.github.io/srr/reference/srr_report.html"><code>srr_report()</code>
+function</a>
+may be accessed through the link given in the <code>pkgcheck</code> output, or it can be
+viewed by calling that function directly.</p>
+</div>
+<div id="pkgdev-badges" class="section level2">
+<h2>
+<span class="header-section-number">3.5</span> Gold, Silver, and Bronze Badges<a class="anchor" aria-label="anchor" href="#pkgdev-badges"><i class="fas fa-link"></i></a>
+</h2>
+<p>All statistical software which is recommended for acceptance by reviewers is
+entitled to display an rOpenSci badge. This badge is a modified version of the
+badge for the <a href="https://devguide.ropensci.org/building.html#readme">current peer-review
+system</a>, with an additional
+section on the far right indicating the version of that standards against which
+the software was assessed, coloured according to the “grade” of the badge. The
+three possible badges look like this:</p>
+<p><a href="https://github.com/ropenscilabs/statistical-software-review-book"><img src="badges/stats-bronze.svg"></a>
+<strong>bronze</strong> for software which is sufficiently or minimally compliant with
+standards to pass review.</p>
+<p><a href="https://github.com/ropenscilabs/statistical-software-review-book"><img src="badges/stats-silver.svg"></a>
+<strong>silver</strong> for software for which complies with more than a minimal set of
+applicable standards, and which extends beyond bronze in least one notable way,
+as explained below.</p>
+<p><a href="https://github.com/ropenscilabs/statistical-software-review-book"><img src="badges/stats-gold.svg"></a>
+<strong>gold</strong> for software which complies with <em>all</em> standards which reviewers have
+deemed potentially applicable.</p>
+<p>The submission template requires authors to identify the category they wish to
+attain from the review process. These standards are not static, and it is
+always possible to elevate a badge to a higher grade subsequent to review.
+Badge grades may also be downgraded for code which is not continuously aligned
+with ongoing developments in standards. The following sub-sections provide
+further clarification of each grade.</p>
+<div id="pkgdev-bronze" class="section level3">
+<h3>
+<span class="header-section-number">3.5.1</span> Bronze <a href="https://github.com/ropenscilabs/statistical-software-review-book"><img src="badges/stats-bronze.svg"></a><a class="anchor" aria-label="anchor" href="#pkgdev-bronze"><i class="fas fa-link"></i></a>
+</h3>
+<p>Software which is sufficiently or minimally compliant with standards will
+receive a bronze badge. One common reason for this badge is software which
+authors do not intend to develop further following review. This commonly
+arises for software produced from research projects which have been completed,
+leaving no funding to further develop the software. Another reason might be
+that software has been developed for a particular use case, with authors
+unable to align it with additional standards in order to expand its general
+utility. A bronze badge need not signify any weakness or inadequacy in
+software, rather it will generally signify software which has been developed
+for one particular use case, and which will not be subject to significant
+further development.</p>
+</div>
+<div id="pkgdev-silver" class="section level3">
+<h3>
+<span class="header-section-number">3.5.2</span> Silver <a href="https://github.com/ropenscilabs/statistical-software-review-book"><img src="badges/stats-silver.svg"></a><a class="anchor" aria-label="anchor" href="#pkgdev-silver"><i class="fas fa-link"></i></a>
+</h3>
+<p>Silver badges are granted to software which extends beyond the minimal
+requirements of bronze in at least one the following four aspects:</p>
+<ul>
+<li>Compliance with a good number of standards beyond those identified as
+minimally necessary. This will require reviewers and authors to agree on
+identification of both a minimal subset of necessary standards, and a full
+set of potentially applicable standards. This aspect may be considered
+fulfilled if at least one quarter of the additional potentially applicable
+standards have been met, and should definitely be considered fulfilled if
+more than one half have been met.</li>
+<li>Demonstrating excellence in compliance with multiple standards from at least
+two broad sub-categories. Sub-categories are distinguished in the <a href="standards.html#standards">Standards
+Chapter</a> by three numbers, so that the <a href="standards.html#general-standards"><em>General
+Standards</em></a> have five sub-categories numbered 6.1.1 to
+6.1.5. This aspect would require software to extend notably beyond the
+requirements of two or more standards in at least two sub-categories
+(regardless of whether general or category-specific standards). For example,
+software which might otherwise be assessed at bronze grade, yet which is both
+excellently documented, and has an outstanding test suite, may be considered
+to fulfil this aspect.</li>
+<li>Have a demonstrated <em>generality</em> of usage beyond one single envisioned use
+case. Software is frequently developed for one particular use case envisioned
+by the authors themselves. Generalising the utility of software so that it
+is readily applicable to other use cases, and satisfactorily documenting such
+generality of usage, represents another aspect which may be considered
+sufficient for software to attain a silver grade.</li>
+<li>Internal aspects of package structure and design. Many aspects of the
+internal structure and design of software are too variable to be effectively
+addressed by standards. Packages which are judged by reviewers to reflect
+notably excellent design choices, especially in the implementation of core
+statistical algorithms, may also be considered worthy of a silver grade.</li>
+</ul>
+</div>
+<div id="pkgdev-gold" class="section level3">
+<h3>
+<span class="header-section-number">3.5.3</span> Gold <a href="https://github.com/ropenscilabs/statistical-software-review-book"><img src="badges/stats-gold.svg"></a><a class="anchor" aria-label="anchor" href="#pkgdev-gold"><i class="fas fa-link"></i></a>
+</h3>
+<p>To attain a gold badge, software must comply with all applicable standards, and
+must also fulfil at least three of the four aspects described above for
+silver-grade badges. Both the applicability of standards, and fulfilment of
+these three aspects, will ultimately determined by reviewers. Moreover,
+compliance with all grades is assessed against current standards, meaning that
+a gold badge must be actively maintained as standards themselves are revised
+and updated.</p>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="overview.html"><span class="header-section-number">2</span> Overview of the Project and of this Book</a></div>
+<div class="next"><a href="pkgsubmission.html"><span class="header-section-number">4</span> Guide for Editors</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#pkgdev"><span class="header-section-number">3</span> Guide for Authors</a></li>
+<li><a class="nav-link" href="#scope"><span class="header-section-number">3.1</span> Scope</a></li>
+<li><a class="nav-link" href="#the-pkgcheck-package"><span class="header-section-number">3.2</span> The pkgcheck package</a></li>
+<li><a class="nav-link" href="#pkgdev-autotest"><span class="header-section-number">3.3</span> The autotest package</a></li>
+<li><a class="nav-link" href="#pkgdev-srr"><span class="header-section-number">3.4</span> Alignment with Standards</a></li>
+<li>
+<a class="nav-link" href="#pkgdev-badges"><span class="header-section-number">3.5</span> Gold, Silver, and Bronze Badges</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#pkgdev-bronze"><span class="header-section-number">3.5.1</span> Bronze </a></li>
+<li><a class="nav-link" href="#pkgdev-silver"><span class="header-section-number">3.5.2</span> Silver </a></li>
+<li><a class="nav-link" href="#pkgdev-gold"><span class="header-section-number">3.5.3</span> Gold </a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>rOpenSci Statistical Software Peer Review</strong>" was written by Mark Padgham and Noam Ross. It was last built on 2021-06-23.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

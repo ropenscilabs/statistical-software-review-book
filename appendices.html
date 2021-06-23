@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>A Appendices | rOpenSci Statistical Software Peer Review</title>
+<meta name="author" content="Mark Padgham and Noam Ross">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.9002/transition.js"></script><script src="libs/bs3compat-0.2.5.9002/tabs.js"></script><script src="libs/bs3compat-0.2.5.9002/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">rOpenSci Statistical Software Peer Review</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li class="book-part">Introduction</li>
+<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview of the Project and of this Book</a></li>
+<li class="book-part">Package Development, Submission, and Review</li>
+<li><a class="" href="pkgdev.html"><span class="header-section-number">3</span> Guide for Authors</a></li>
+<li><a class="" href="pkgsubmission.html"><span class="header-section-number">4</span> Guide for Editors</a></li>
+<li><a class="" href="pkgreview.html"><span class="header-section-number">5</span> Guide for Reviewers</a></li>
+<li class="book-part">Standards</li>
+<li><a class="" href="standards.html"><span class="header-section-number">6</span> Standards: Version 0.0.1</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="active" href="appendices.html"><span class="header-section-number">A</span> Appendices</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="appendices" class="section level1">
+<h1>
+<span class="header-section-number">A</span> Appendices<a class="anchor" aria-label="anchor" href="#appendices"><i class="fas fa-link"></i></a>
+</h1>
+<div id="python" class="section level2">
+<h2>
+<span class="header-section-number">A.1</span> Notes on Scope and the Python Statistical Ecosystem<a class="anchor" aria-label="anchor" href="#python"><i class="fas fa-link"></i></a>
+</h2>
+<p>Two factors may be usefully noted in this regard:</p>
+<ol style="list-style-type: decimal">
+<li>The potential number of python packages for statistical analyses is likely
+to be relatively more restricted than relative numbers of <strong>R</strong> packages.
+Taking as indicative presentations at the previous three Joint Statistical
+Meetings (JSMs; 2018-2020), no python packages were referred to in any
+abstract, while 32 <strong>R</strong> packages were presented, along with two
+meta-platforms for <strong>R</strong> packages. Presentations at the Symposium of Data
+Science and Statistics (SDSS) for 2018-19 similarly including numerous
+presentations of <strong>R</strong> packages, along with presentation of
+<a href="https://altair-viz.github.io">three</a>
+<a href="https://github.com/ajboyd2/salmon">python</a>
+<a href="https://github.com/dlsun/symbulate">packages</a>. It may accordingly be
+expected that potential expansion to include python packages will demand
+relatively very little time or effort compared with that devoted to <strong>R</strong>
+packages as the primary software scope.</li>
+<li>In spite of the above, the community of python users is enormously greater,
+reflected in the currently 311,915 packages compared with
+17,751 packages on CRAN, or over 17 times as
+many python packages. Similarly, 41.7% of all respondents to the <a href="https://insights.stackoverflow.com/survey/2019">2019
+stackoverflow developer
+survey</a> nominated python as
+their most popular language, compared with only 5.8% who nominated <strong>R</strong>.</li>
+</ol>
+<p>The relative importance of python is powerfully reflected in temporal trends
+from the <a href="https://insights.stackoverflow.com/survey/2019">stackoverflow developer
+survey</a> from the previous three
+years, with results shown in the following graphic.</p>
+<div class="inline-figure"><img src="statistical-software-review-book_files/figure-html/py_v_r-1.png" width="100%"></div>
+<p>Python is not only more used and more loved than <strong>R</strong>, but both statistics for
+python have consistently grown at a faster rate over the past three years as
+have equivalent statistics for <strong>R</strong>.</p>
+<p>Both languages nevertheless have relative well-defined standards for software
+packaging, python via the <a href="https://packaging.python.org/tutorials/packaging-projects">Python Package Index
+(pypi)</a>, and <strong>R</strong>
+via <a href="https://cran.r-project.org">CRAN</a>. In contrast to CRAN, which runs its own
+checks on all packages on a daily basis, there are no automatic checks for
+<a href="https://packaging.python.org/tutorials/packaging-projects">pypi</a> packages, and
+almost any form of package that minimally conforms to the standards may be
+submitted. This much lower effective barrier to entry likely partially
+contributes to the far greater numbers of
+<a href="https://packaging.python.org/tutorials/packaging-projects">pypi</a>
+(311,915) than
+<a href="https://cran.r-project.org">CRAN</a> (17,751) packages.</p>
+</div>
+<div id="appendix-categories" class="section level2">
+<h2>
+<span class="header-section-number">A.2</span> Empirical Derivation of Categories<a class="anchor" aria-label="anchor" href="#appendix-categories"><i class="fas fa-link"></i></a>
+</h2>
+<p>We attempted to derive a realistic categorisation through using empirical data
+from several sources of potential software submissions, including all
+apparently “statistical” R packages published in the <a href="https://joss.theoj.org">Journal of Open Source
+Software (JOSS</a>), packages published in the <a href="https://www.jstatsoft.org/index">Journal of
+Statistical Software</a>, software presented at
+the 2018 and 2019 Joint Statistical Meetings (JSM), and Symposia on Data
+Science and Statistics (SDSS), well as CRAN task views. We have also compiled
+a list of the descriptions of <a href="https://github.com/mpadge/statistical-software/blob/master/abstracts/ropensci-abstracts.md">all packages rejected by
+rOpenSci</a>
+as being out of current scope because of current inability to consider
+statistical packages, along with a selection of <a href="https://github.com/mpadge/statistical-software/blob/master/abstracts/joss-abstracts.md">recent statistical
+R packages</a>
+accepted by JOSS. (The full list of all R package published by JOSS can be
+viewed at <a href="https://joss.theoj.org/papers//in/R" class="uri">https://joss.theoj.org/papers//in/R</a>).</p>
+<p>We allocated one or more key words (or phrases) to each abstract, and use the
+frequencies and inter-connections between these to inform the following
+categorisation are represented in the <a href="https://ropenscilabs.github.io/statistical-software/abstracts/network-terms/index.html">interactive
+graphic</a>
+(also included in the <a href="appendices.html#appendix-keywords">Appendix</a>), itself derived from
+analyses of abstracts from all statistical software submitted to both rOpenSci
+and JOSS. (Several additional analyses and graphical representations of these
+raw data are included an <a href="https://github.com/ropenscilabs/statistical-software">auxiliary github
+repository</a>.) The primary
+nodes that emerge from these empirical analyses (with associated <em>relative</em>
+sizes in parentheses) are shown in the following table.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:top-10terms">Table A.1: </span>Most frequent key words from all JOSS abstracts (N = 92) for statistical software. Proportions are scaled <em>per abstract</em>, with each abstract generally having multiple key words, and so sum of proportions exceeds one.</caption>
+<thead><tr class="header">
+<th align="right">n</th>
+<th align="left">term</th>
+<th align="right">proportion</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">ML</td>
+<td align="right">0.133</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">statistical indices and scores</td>
+<td align="right">0.111</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">visualization</td>
+<td align="right">0.111</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">dimensionality reduction</td>
+<td align="right">0.100</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">probability distributions</td>
+<td align="right">0.100</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">regression</td>
+<td align="right">0.100</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">wrapper</td>
+<td align="right">0.100</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left">estimates</td>
+<td align="right">0.089</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left">Monte Carlo</td>
+<td align="right">0.089</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">Bayesian</td>
+<td align="right">0.078</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="left">categorical variables</td>
+<td align="right">0.078</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="left">EDA</td>
+<td align="right">0.078</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="left">networks</td>
+<td align="right">0.078</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="left">summary statistics</td>
+<td align="right">0.067</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="left">survival</td>
+<td align="right">0.067</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="left">workflow</td>
+<td align="right">0.067</td>
+</tr>
+</tbody>
+</table></div>
+<p>The top key words and their inter-relationships within the main <a href="https://ropenscilabs.github.io/statistical-software/abstracts/network-terms/index.html">network
+diagram</a>
+were used to distinguish the following primary categories representing all
+terms which appear in over 5% of all abstracts, along with the two additional
+categories of “spatial” and “education”. We have excluded the key word
+“Estimates” as being too generic to usefully inform standards, and have also
+collected a few strongly-connected terms into single categories.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:collate-methods-categories">Table A.2: </span>Proposed categorisation of statistical software, with corresponding proportions of all JOSS software matching each category</caption>
+<colgroup>
+<col width="1%">
+<col width="18%">
+<col width="4%">
+<col width="76%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">n</th>
+<th align="left">term</th>
+<th align="right">proprtion</th>
+<th align="left">comment</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Bayesian &amp; Monte Carlo</td>
+<td align="right">0.167</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">dimensionality reduction &amp; feature selection</td>
+<td align="right">0.144</td>
+<td align="left">Commonly as a result of ML algorithms</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">ML</td>
+<td align="right">0.133</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">regression/splines/interpolation</td>
+<td align="right">0.133</td>
+<td align="left">Including function data analysis</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">statistical indices and scores</td>
+<td align="right">0.111</td>
+<td align="left">Software generally intended to produce specific indices or scores as statistical output</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">visualization</td>
+<td align="right">0.111</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">probability distributions</td>
+<td align="right">0.100</td>
+<td align="left">Including kernel densities, likelihood estimates and estimators, and sampling routines</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left">wrapper</td>
+<td align="right">0.100</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left">categorical variables</td>
+<td align="right">0.078</td>
+<td align="left">Including latent variables, and those output from ML algorithms. Note also that method for dimensionality reduction (such as clustering) often transform data to categorical forms.</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">Exploratory Data Analysis (EDA)</td>
+<td align="right">0.078</td>
+<td align="left">Including information statistics such as Akaike’s criterion, and techniques such as random forests. Often related to workflow software.</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="left">networks</td>
+<td align="right">0.078</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="left">summary statistics</td>
+<td align="right">0.067</td>
+<td align="left">Primarily related in the empirical data to regression and survival analyses, yet clearly a distinct category of its own.</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="left">survival</td>
+<td align="right">0.067</td>
+<td align="left">strongly related to EDA, yet differing in being strictly descriptive of software <em>outputs</em> whereas EDA may include routines to explore data <em>inputs</em> and other pre-output stages of analysis.</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="left">workflow</td>
+<td align="right">0.067</td>
+<td align="left">Often related to EDA, and very commonly also to ML.</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="left">spatial</td>
+<td align="right">0.033</td>
+<td align="left">Also an important intermediate node connecting several other nodes, yet defining its own distinct cluster reflecting a distinct area of expertise.</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="left">education</td>
+<td align="right">0.044</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table></div>
+<p>The full network diagram can then be reduced down to these categories only,
+with interconnections weighted by all first- and second-order interconnections
+between intermediate categories, to give the following, simplified diagram
+(in which “scores” denotes “statistical indices and scores”; with the diagram
+best inspected by dragging individual nodes to see their connections to
+others).</p>
+<pre><code>#&gt; `summarise()` has grouped output by 'from'. You can override using the `.groups` argument.
+#&gt; `summarise()` has grouped output by 'from'. You can override using the `.groups` argument.</code></pre>
+<div id="htmlwidget-b22985179f0d812c9115" style="width:100%;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b22985179f0d812c9115">{"x":{"nodes":{"label":["Bayes/MC","dimensionality reduction","ML","regression","scores","visualization","probability distributions","wrapper","categorical variables","EDA","networks","summary statistics","survival","workflow","education","spatial"],"value":[15,13,12,11,10,10,9,9,7,7,7,6,6,6,4,3],"id":["Bayes/MC","dimensionality reduction","ML","regression","scores","visualization","probability distributions","wrapper","categorical variables","EDA","networks","summary statistics","survival","workflow","education","spatial"]},"edges":{"from":["Bayes/MC","Bayes/MC","Bayes/MC","Bayes/MC","Bayes/MC","Bayes/MC","Bayes/MC","Bayes/MC","Bayes/MC","Bayes/MC","Bayes/MC","categorical variables","categorical variables","categorical variables","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","EDA","EDA","EDA","EDA","EDA","EDA","EDA","education","education","education","education","education","education","education","ML","ML","ML","ML","ML","ML","ML","ML","networks","networks","probability distributions","regression","regression","scores","scores","summary statistics","summary statistics","summary statistics","survival","visualization","visualization","workflow"],"to":["EDA","education","ML","networks","regression","scores","spatial","summary statistics","survival","visualization","wrapper","ML","networks","scores","Bayes/MC","ML","regression","spatial","survival","visualization","workflow","education","ML","networks","summary statistics","visualization","workflow","wrapper","dimensionality reduction","ML","networks","summary statistics","visualization","workflow","wrapper","networks","probability distributions","regression","summary statistics","survival","visualization","workflow","wrapper","visualization","wrapper","regression","survival","visualization","visualization","workflow","visualization","workflow","wrapper","visualization","workflow","wrapper","wrapper"],"width":[5,5,5,5,5,5,5,5,5,5,5,2.36111111111111,2.36111111111111,2.36111111111111,3.88888888888889,3.88888888888889,3.88888888888889,3.88888888888889,3.88888888888889,3.88888888888889,3.88888888888889,2.77777777777778,2.77777777777778,2.77777777777778,2.77777777777778,2.77777777777778,2.77777777777778,2.77777777777778,1.66666666666667,1.66666666666667,1.66666666666667,1.66666666666667,1.66666666666667,1.66666666666667,1.66666666666667,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,0.972222222222222,0.972222222222222,0.555555555555556,1.66666666666667,1.66666666666667,0.694444444444444,0.694444444444444,0.694444444444444,0.694444444444444,0.694444444444444,0.277777777777778,0.416666666666667,0.416666666666667,0.138888888888889]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script><p>Standards considered under any of the ensuing categories must be developed with
+reference to inter-relationships between categories, and in particular to
+potential ambiguity within and between any categorisation. An example of such
+ambiguity, and of potential difficulties associated with categorisation, is the
+category of “network” software which appropriate describes the
+<a href="https://github.com/jakobbossek/grapherator"><code>grapherator</code></a> package (with
+accompanying <a href="https://joss.theoj.org/papers/10.21105/joss.00528">JOSS paper</a>)
+which is effectively a distribution generator for data represented in
+a particular format that happens to represent a graph; and three JSM
+presentations, one on <a href="https://ww2.amstat.org/meetings/jsm/2018/onlineprogram/AbstractDetails.cfm?abstractid=327171">network-based clustering of high-dimensional
+data</a>,
+one on <a href="https://ww2.amstat.org/meetings/jsm/2018/onlineprogram/AbstractDetails.cfm?abstractid=328764">community structure in dynamic
+networks</a>
+and one on <a href="https://ww2.amstat.org/meetings/jsm/2018/onlineprogram/AbstractDetails.cfm?abstractid=328764">Gaussian graphical
+models</a>.
+Standards derived for network software must accommodate such diversity of
+applications, and must accommodate software for which the “network” category
+may pertain only to some relatively minor aspect, while the primary algorithms
+or routines may not be related to network software in any direct way.</p>
+</div>
+<div id="appendix-keywords" class="section level2">
+<h2>
+<span class="header-section-number">A.3</span> Analysis of statistical software keywords<a class="anchor" aria-label="anchor" href="#appendix-keywords"><i class="fas fa-link"></i></a>
+</h2>
+<p>The
+<a href="https://joss.theoj.org">JOSS</a>
+conducts its own peer review process, and publishes textual descriptions of
+accepted software. Each piece of software then has its own web page on the
+journal’s site, on which the text is presented as a compiled <code>.pdf</code>-format
+document, along with links to the open review, as well as to the software
+repository. The published document must be included within the software
+repository in a file named <code>paper.md</code>, which enables automatic extraction and
+analysis of these text descriptions of software. Rather than attempt
+a comprehensive, and unavoidably subjective, categorization of software, these
+textual descriptions were used to identify key words or phrases (hereafter,
+“keywords”) which encapsulated the purpose, function, or other general
+descriptive elements of each piece of software. Each paper generally yielded
+multiple keywords. Extracting these from all papers judged to be potentially in
+scope allowed for the construction of a network of topics, in which the nodes
+were the key words and phrases, and the connections between any pair of nodes
+reflected the number of times those two keywords co-occurred across all papers.</p>
+<p>We extracted all papers accepted and published by JOSS (217 at the time of
+writing in early 2020), and manually determined which of these were broadly
+statistical, reducing the total to 92. We then read through the contents of
+each of these, and recorded as many keywords as possible for each paper. The
+resultant network is shown in the following interactive graphic, in which nodes
+are scaled by numbers of occurrences, and edges by numbers of co-occurrences.
+(Or <a href="https://ropenscilabs.github.io/statistical-software/abstracts/network-terms/index.html">click
+here</a>
+for full-screen version with link to code.)</p>
+<div id="htmlwidget-cde5c072f26745d6feeb" style="width:100%;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cde5c072f26745d6feeb">{"x":{"nodes":{"id":["aggregation","algorithm choice","ANCOVA","applied statistics","areal statistics","Bayesian","benchmarking","bias","categorical variables","chronology","clustering","confidence intervals","correlation","covariance","covariates","cross-validation","data preparation","data transformation","density estimator","descriptive statistics","differential equations","dimensionality reduction","discrete data","distance metrics","dynamical systems","EDA","effect sizes","error estimates","estimates","factor analysis","feature selection","focal windows","functional data analysis","graphical output","grouped data","high-dimensional data","histograms","index","inference","information statistics","interaction terms","kernel density","kernel logistic regression","latent variables","learning curve","likelihood","marginal effects","matrix algebra","maximum entropy","maximum likelihood","maximum liklihood","missing value processing","ML","model probability","model selection","model strategy","Monte Carlo","multi-state model","multidimensional model","networks","neural network","noise","non-parametric","non-stationarity","null-hypothesis testing","optimization","ordered response data","outlier detection","overlap","pairwise comparisons","parameter estimation","probability density","probability distributions","random forests","redistribution","regression","reinforcement","reporting","risk","sampling","sensitivity","similarity statistics","simulation","spatial","splines","standard error","stationarity","statistical models","summary statistics","survival","synthetic data","test selection","threshold","time series","trees","uncertainty","variable selection","variance","visualization","warping","workflow"],"label":["aggregation","algorithm choice","ANCOVA","applied statistics","areal statistics","Bayesian","benchmarking","bias","categorical variables","chronology","clustering","confidence intervals","correlation","covariance","covariates","cross-validation","data preparation","data transformation","density estimator","descriptive statistics","differential equations","dimensionality reduction","discrete data","distance metrics","dynamical systems","EDA","effect sizes","error estimates","estimates","factor analysis","feature selection","focal windows","functional data analysis","graphical output","grouped data","high-dimensional data","histograms","index","inference","information statistics","interaction terms","kernel density","kernel logistic regression","latent variables","learning curve","likelihood","marginal effects","matrix algebra","maximum entropy","maximum likelihood","maximum liklihood","missing value processing","ML","model probability","model selection","model strategy","Monte Carlo","multi-state model","multidimensional model","networks","neural network","noise","non-parametric","non-stationarity","null-hypothesis testing","optimization","ordered response data","outlier detection","overlap","pairwise comparisons","parameter estimation","probability density","probability distributions","random forests","redistribution","regression","reinforcement","reporting","risk","sampling","sensitivity","similarity statistics","simulation","spatial","splines","standard error","stationarity","statistical models","summary statistics","survival","synthetic data","test selection","threshold","time series","trees","uncertainty","variable selection","variance","visualization","warping","workflow"],"value":[2,1,1,1,1,7,1,1,7,1,3,1,2,1,2,2,1,1,2,1,1,10,3,2,1,6,2,1,8,1,4,1,3,1,1,2,1,4,3,2,1,4,1,2,1,3,1,2,1,3,1,1,12,1,4,1,8,1,1,7,1,1,1,2,1,3,1,1,1,1,1,4,9,2,1,9,1,2,2,4,1,2,1,3,2,1,1,1,5,6,2,1,1,3,2,1,1,4,5,2,5]},"edges":{"from":["aggregation","aggregation","aggregation","aggregation","aggregation","aggregation","aggregation","algorithm choice","algorithm choice","ANCOVA","applied statistics","applied statistics","applied statistics","areal statistics","areal statistics","areal statistics","areal statistics","areal statistics","Bayesian","Bayesian","Bayesian","Bayesian","Bayesian","Bayesian","Bayesian","Bayesian","Bayesian","Bayesian","Bayesian","Bayesian","benchmarking","benchmarking","bias","bias","bias","bias","categorical variables","categorical variables","categorical variables","categorical variables","categorical variables","categorical variables","categorical variables","categorical variables","categorical variables","categorical variables","categorical variables","categorical variables","chronology","chronology","clustering","clustering","clustering","clustering","clustering","confidence intervals","confidence intervals","confidence intervals","correlation","covariance","covariance","covariates","covariates","covariates","covariates","cross-validation","cross-validation","cross-validation","data preparation","data preparation","data transformation","data transformation","density estimator","density estimator","density estimator","density estimator","density estimator","density estimator","descriptive statistics","descriptive statistics","descriptive statistics","descriptive statistics","descriptive statistics","differential equations","differential equations","differential equations","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","dimensionality reduction","discrete data","discrete data","discrete data","discrete data","discrete data","discrete data","distance metrics","distance metrics","dynamical systems","dynamical systems","EDA","EDA","EDA","EDA","EDA","EDA","EDA","EDA","EDA","EDA","EDA","effect sizes","effect sizes","error estimates","estimates","estimates","estimates","estimates","estimates","estimates","estimates","estimates","estimates","estimates","factor analysis","feature selection","feature selection","feature selection","feature selection","feature selection","feature selection","feature selection","feature selection","focal windows","focal windows","focal windows","focal windows","functional data analysis","functional data analysis","functional data analysis","functional data analysis","functional data analysis","graphical output","graphical output","grouped data","grouped data","grouped data","high-dimensional data","high-dimensional data","high-dimensional data","histograms","histograms","index","index","inference","inference","information statistics","information statistics","information statistics","information statistics","information statistics","interaction terms","interaction terms","kernel density","kernel density","kernel density","kernel density","kernel density","kernel density","kernel density","kernel logistic regression","kernel logistic regression","latent variables","latent variables","latent variables","likelihood","likelihood","marginal effects","matrix algebra","matrix algebra","matrix algebra","matrix algebra","maximum entropy","maximum likelihood","maximum likelihood","maximum likelihood","maximum likelihood","maximum likelihood","maximum liklihood","maximum liklihood","missing value processing","ML","ML","ML","ML","ML","ML","ML","ML","ML","ML","ML","ML","ML","model probability","model selection","model selection","model selection","model selection","model strategy","model strategy","Monte Carlo","Monte Carlo","Monte Carlo","Monte Carlo","Monte Carlo","Monte Carlo","Monte Carlo","Monte Carlo","Monte Carlo","multi-state model","multidimensional model","multidimensional model","multidimensional model","multidimensional model","networks","networks","networks","networks","noise","non-parametric","non-parametric","non-stationarity","non-stationarity","ordered response data","ordered response data","overlap","parameter estimation","parameter estimation","parameter estimation","probability density","probability density","probability distributions","probability distributions","probability distributions","random forests","redistribution","redistribution","regression","regression","regression","regression","reinforcement","reporting","risk","sampling","sampling","similarity statistics","splines","splines","statistical models","summary statistics","summary statistics","survival","synthetic data","threshold","time series","variable selection","visualization"],"to":["Bayesian","estimates","learning curve","Monte Carlo","redistribution","threshold","uncertainty","statistical models","summary statistics","correlation","chronology","discrete data","index","focal windows","kernel density","kernel logistic regression","similarity statistics","spatial","EDA","functional data analysis","likelihood","ML","model selection","Monte Carlo","networks","null-hypothesis testing","redistribution","survival","threshold","uncertainty","networks","optimization","estimates","probability density","probability distributions","sampling","data preparation","error estimates","estimates","index","latent variables","maximum likelihood","missing value processing","ML","model probability","networks","pairwise comparisons","trees","discrete data","index","dimensionality reduction","Monte Carlo","regression","risk","spatial","information statistics","maximum likelihood","probability distributions","variance","risk","variance","EDA","optimization","random forests","trees","likelihood","ML","model selection","missing value processing","ML","visualization","workflow","EDA","kernel density","maximum likelihood","non-parametric","probability density","probability distributions","EDA","information statistics","summary statistics","variable selection","workflow","dynamical systems","inference","likelihood","effect sizes","feature selection","functional data analysis","inference","ML","model strategy","Monte Carlo","neural network","random forests","regression","reinforcement","risk","sampling","spatial","splines","survival","time series","visualization","workflow","index","multi-state model","ordered response data","reporting","summary statistics","survival","ML","similarity statistics","inference","likelihood","factor analysis","information statistics","kernel density","ML","model selection","random forests","summary statistics","trees","variable selection","visualization","workflow","inference","test selection","estimates","learning curve","maximum liklihood","Monte Carlo","non-stationarity","probability density","probability distributions","sampling","simulation","standard error","survival","visualization","functional data analysis","ML","regression","splines","survival","time series","visualization","workflow","kernel density","kernel logistic regression","similarity statistics","spatial","regression","splines","survival","visualization","warping","ML","summary statistics","histograms","latent variables","regression","networks","outlier detection","regression","latent variables","regression","overlap","visualization","likelihood","test selection","maximum likelihood","probability distributions","summary statistics","variable selection","workflow","marginal effects","regression","kernel logistic regression","maximum likelihood","non-parametric","probability density","probability distributions","similarity statistics","spatial","similarity statistics","spatial","model probability","pairwise comparisons","regression","model selection","Monte Carlo","regression","ML","probability density","probability distributions","sensitivity","networks","networks","non-parametric","probability density","probability distributions","trees","probability density","probability distributions","ML","model selection","model strategy","networks","neural network","probability density","probability distributions","regression","reinforcement","sampling","summary statistics","survival","visualization","workflow","pairwise comparisons","regression","reporting","survival","visualization","reinforcement","sampling","redistribution","regression","sampling","simulation","spatial","summary statistics","survival","threshold","uncertainty","survival","parameter estimation","regression","splines","survival","optimization","outlier detection","stationarity","trees","variance","probability density","probability distributions","survival","time series","reporting","summary statistics","visualization","regression","splines","survival","probability distributions","sampling","regression","sampling","synthetic data","trees","threshold","uncertainty","splines","survival","visualization","warping","sampling","summary statistics","variance","spatial","synthetic data","spatial","survival","visualization","summary statistics","variable selection","workflow","visualization","variance","uncertainty","warping","workflow","workflow"],"width":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,1,2,1,1,1,1,2,3,2,1,1,1,1,1,1,1,2,1,1,1,1,2,1,1,1,1,1]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script><p>Such a network visualization enables immediate identification of more and less
+central concepts including, in our case, several that we may not otherwise have
+conceived of as having been potentially in scope. We then used this network to
+define our set of key “in scope” concepts. This figure also reveals that many
+of these keywords are somewhat “lower level” than the kinds of concepts we
+might otherwise have used to define scoping categories. For example, keywords
+such as “likelihood” or “probability” are not likely to be useful in defining
+actual categories of statistical software, yet they turned out to lie at the
+centres of relatively well-defined groups of related keywords.</p>
+<p>We also examined the forms of both input and output data for each of the 92
+pieces of software described in these JOSS papers, and constructed <a href="https://ropenscilabs.github.io/statistical-software/abstracts/network-io/index.html">an
+additional
+graph</a>
+directionally relating these different data formats.</p>
+<pre><code>#&gt; `summarise()` has grouped output by 'from'. You can override using the `.groups` argument.</code></pre>
+<div id="htmlwidget-4567664ad0e30c27d8af" style="width:100%;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4567664ad0e30c27d8af">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],"label":["adjacency matrix","application-specific data","application-specific data format","arbitrary data","binary vectors","binned data","categorical data","custom graph format","data.frame","formula","genetic data","graph","index scores","matrix","ML data","model estimates","model prediction","model predictions","network","numeric & categorical variables","numeric variables","numeric vector","numeric vectors","parameters","populations","probability","probability estimates","reports","S3 function","spatial data","statistical parameters","summary statistics","summary web page","time series","trained ML model","transformed data.frame","visualization","web-based visualization"],"value":[1,1,13,1,1,1,2,1,50,3,1,2,1,3,9,34,8,3,1,1,6,8,13,5,1,1,1,1,1,1,1,52,1,5,1,1,11,1]},"edges":{"from":[26,26,26,26,9,9,9,9,9,9,9,9,9,9,9,9,9,23,23,23,15,15,15,15,36,36,36,7,7,16,16,16,16,16,16,3,3,3,3,3,3,24,24,24,24,11,11,12,32,5,5,21,21,6,22,22,22,22,2,2,2,4,4,13,13],"to":[37,17,27,8,24,26,17,34,39,18,31,20,1,19,38,40,14,17,34,31,17,34,39,18,17,34,19,17,34,17,34,39,18,35,30,17,34,39,3,14,13,17,34,18,33,34,18,34,17,34,28,17,19,17,17,34,39,19,17,34,29,34,39,3,13],"width":[1,1,1,1,1,1,19,30,7,6,1,1,1,2,1,1,1,4,5,1,1,2,1,1,4,3,1,2,2,2,5,2,1,1,1,3,7,4,2,1,1,4,11,1,1,3,1,1,1,1,1,1,1,1,2,4,2,1,1,1,1,1,1,1,1]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="appendix-other-software-standards" class="section level2">
+<h2>
+<span class="header-section-number">A.4</span> Other Software Standards<a class="anchor" aria-label="anchor" href="#appendix-other-software-standards"><i class="fas fa-link"></i></a>
+</h2>
+<p>Among the noteworthy instances of software standards, the following are
+particularly relevant:</p>
+<ol style="list-style-type: decimal">
+<li>The <a href="https://bestpractices.coreinfrastructure.org/en">Core Infrastructure Initiative’s Best Practices
+Badge</a>, which is granted to
+software meeting an extensive list of
+<a href="https://github.com/coreinfrastructure/best-practices-badge/blob/master/doc/criteria.md">criteria</a>.
+This list of criteria provides a singularly useful reference for software
+standards.</li>
+<li>The <a href="https://www.software.ac.uk/">Software Sustainability Institute</a>’s
+<a href="https://www.software.ac.uk/resources/guides-everything/software-evaluation-guide"><em>Software Evaluation
+Guide</em></a>,
+in particular their guide to <a href="http://software.ac.uk/sites/default/files/SSI-SoftwareEvaluationCriteria.pdf"><em>Criteria-based software
+evaluation</em></a>,
+which considers two primary categories of <em>Usability</em> and <em>Sustainability
+and Maintainability</em>, each of which is divided into numerous sub-categories.
+The guide identifies numerous concrete criteria for each sub-category,
+explicitly detailed below in order to provide an example of the kind of
+standards that might be adapted and developed for application to the present
+project.</li>
+<li>The <a href="https://transparentstats.github.io/guidelines/"><em>Transparent Statistics
+Guidelines</em></a>, by the “HCI
+(Human Computer Interaction) Working Group”. While currently only in its
+beginning phases, that document aims to provide concrete guidance on
+“transparent statistical communication.” If its development continues, it is
+likely to provide useful guidelines on best practices for how statistical
+software produces and reports results.</li>
+<li>The more technical considerations of the <a href="https://www.omg.org/index.htm">Object Management
+Group</a>’s <a href="https://www.omg.org/spec/ASCMM/"><em>Automated Source Code CISQ
+Maintainability Measure</em></a> (where CISQ
+refers to the <a href="https://www.it-cisq.org/"><em>Consortium for IT Software
+Quality</em></a>). This guide describes a number of
+measures which can be automatically extracted and used to quantify the
+maintainability of source code. None of these measures are not already
+considered in one or both of the preceding two documents, but the
+identification of measures particularly amenable to automated assessment
+provides a particularly useful reference.</li>
+</ol>
+<p>There is also rOpenSci’s guide on <a href="https://devguide.ropensci.org/">package development, maintenance, and peer
+review</a>, which provides standards of this type
+for R packages, primarily within its first chapter. Another notable example is
+the <a href="https://principles.tidyverse.org/">tidyverse design guide</a>, and the
+section on <a href="https://tidymodels.github.io/model-implementation-principles/">Conventions for R Modeling
+Packages</a> which
+provides guidance for model-fitting APIs.</p>
+<p>Specific standards for neural network algorithms have also been developed as
+part of a <a href="http://www.inmodelia.com/gsoc2019.html">google 2019 Summer Of Code
+project</a>, resulting in a dedicated
+R package, <a href="https://akshajverma.com/NNbenchmarkWeb/index.html"><code>NNbenchmark</code></a>,
+and accompanying results—their so-called
+<a href="https://akshajverma.com/NNbenchmarkWeb/notebooks.html">“notebooks”</a>—of
+applying their benchmarks to a suite of neural network packages.</p>
+</div>
+<div id="bibliography" class="section level2">
+<h2>
+<span class="header-section-number">A.5</span> Bibliography<a class="anchor" aria-label="anchor" href="#bibliography"><i class="fas fa-link"></i></a>
+</h2>
+
+<div id="refs" class="references">
+<div id="ref-brenning_spatial_2012">
+<p>Brenning, A. 2012. “Spatial Cross-Validation and Bootstrap for the Assessment of Prediction Rules in Remote Sensing: The R Package Sperrorest.” In <em>2012 IEEE International Geoscience and Remote Sensing Symposium</em>, 5372–5. <a href="https://doi.org/10.1109/IGARSS.2012.6352393">https://doi.org/10.1109/IGARSS.2012.6352393</a>.</p>
+</div>
+<div id="ref-estivill-castro_why_2002">
+<p>Estivill-Castro, Vladimir. 2002. “Why so Many Clustering Algorithms: A Position Paper.” <em>ACM SIGKDD Explorations Newsletter</em> 4 (1): 65–75. <a href="https://doi.org/10.1145/568574.568575">https://doi.org/10.1145/568574.568575</a>.</p>
+</div>
+<div id="ref-muenchow_chapter_nodate">
+<p>Muenchow, Jannes, Jakub Nowosad. 2019. <em>Chapter 11 Statistical Learning Geocomputation with R</em>. <a href="https://geocompr.robinlovelace.net/">https://geocompr.robinlovelace.net/</a>.</p>
+</div>
+<div id="ref-schratz_hyperparameter_2019">
+<p>Schratz, Patrick, Jannes Muenchow, Eugenia Iturritxa, Jakob Richter, and Alexander Brenning. 2019. “Hyperparameter Tuning and Performance Assessment of Statistical and Machine-Learning Algorithms Using Spatial Data.” <em>Ecological Modelling</em> 406 (August): 109–20. <a href="https://doi.org/10.1016/j.ecolmodel.2019.06.002">https://doi.org/10.1016/j.ecolmodel.2019.06.002</a>.</p>
+</div>
+<div id="ref-valavi_blockcv_2019">
+<p>Valavi, Roozbeh, Jane Elith, José J. Lahoz‐Monfort, and Gurutzeta Guillera‐Arroita. 2019. “blockCV: An R Package for Generating Spatially or Environmentally Separated Folds for K-Fold Cross-Validation of Species Distribution Models.” <em>Methods in Ecology and Evolution</em> 10 (2): 225–32. <a href="https://doi.org/https://doi.org/10.1111/2041-210X.13107">https://doi.org/https://doi.org/10.1111/2041-210X.13107</a>.</p>
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="standards.html"><span class="header-section-number">6</span> Standards: Version 0.0.1</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#appendices"><span class="header-section-number">A</span> Appendices</a></li>
+<li><a class="nav-link" href="#python"><span class="header-section-number">A.1</span> Notes on Scope and the Python Statistical Ecosystem</a></li>
+<li><a class="nav-link" href="#appendix-categories"><span class="header-section-number">A.2</span> Empirical Derivation of Categories</a></li>
+<li><a class="nav-link" href="#appendix-keywords"><span class="header-section-number">A.3</span> Analysis of statistical software keywords</a></li>
+<li><a class="nav-link" href="#appendix-other-software-standards"><span class="header-section-number">A.4</span> Other Software Standards</a></li>
+<li><a class="nav-link" href="#bibliography"><span class="header-section-number">A.5</span> Bibliography</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>rOpenSci Statistical Software Peer Review</strong>" was written by Mark Padgham and Noam Ross. It was last built on 2021-06-23.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>
